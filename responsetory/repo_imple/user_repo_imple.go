@@ -30,5 +30,7 @@ func (u *User_Repo)SaveUser(context context.Context, user model.User) (model.Use
              		return user,banana.UserConfList
 			 }
 		 }
+		 return  user, banana.SignUpFailed
 	 }
+	 return user, nil
 }

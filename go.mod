@@ -3,6 +3,7 @@ module github.com/panasoniclam/trending-github
 go 1.13
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/go-playground/validator/v10 v10.1.0 // indirect
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/jmoiron/sqlx v1.2.0

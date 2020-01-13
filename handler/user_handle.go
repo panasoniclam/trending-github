@@ -59,6 +59,32 @@ func (u *HandleUser)HandleSignIp(context echo.Context) error  {
 		UpdatedAt: time.Time{},
 		Token:     "",
 	}
+	user, err = u.UserRepo.SaveUser(context.Request().Context(), user)
+	if err!= nil {
+		return  context.JSON(http.StatusConflict, model.Response{
+			StatusCode: http.StatusConflict,
+			Message:    err.Error(),
+			Data:       nil,
+		})
+	}
+	token, err := secure.GenToken(user)
+
+	if err!= nil {
+		return context.JSON(http.StatusInternalServerError,model.Response{
+			StatusCode: http.StatusInternalServerError,
+			Message:    err.Error(),
+			Data:       nil,
+		})
+	}
+
+
+	user.Token = token
+
+	return  context.JSON(http.StatusOK, model.Response{
+		StatusCode: http.StatusOK,
+		Message:    "sữ lý thành công",
+		Data:       nil,
+	})
 
 
 
