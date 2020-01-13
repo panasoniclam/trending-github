@@ -1,6 +1,7 @@
 package rep
+
 type RequestSignUp struct {
-	Email string  `validate:"required"`
-	FullName string `validate:"required"`
-	Password string `validate:"required"`
+	FullName string  `json:"fullname" validate:"required"`
+	Email string      `validate:"required"`
+	Password string  `validate:"required"`
 }

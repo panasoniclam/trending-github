@@ -11,6 +11,6 @@ type API struct {
 }
 
 func (api *API)SetupRoute()  {
-	api.ECHO.GET("/user/user-sign-in",api.HandleUser.HanldeSignIn)
-	api.ECHO.GET("/user/user-sign-up",api.HandleUser.HandleSignUp)
+	api.ECHO.GET("/user/user-sign-up",api.HandleUser.HandleSignIp)
+	//api.ECHO.GET("/user/user-sign-in",api.HandleUser.HandleSignIn)
 }
