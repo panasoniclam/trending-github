@@ -1,22 +1,43 @@
 package main
 
-const (
-	host = "localhost"
-	port= "5432"
-	user ="postgres"
-	password ="3414pic2ck2pi"
-	dbname="postgres"
+import (
+	"fmt"
+	"github.com/panasoniclam/trending-github/db"
 )
+const schema = `
+   CREATE TABLE TEST(
+     name text,
+     email text
+    )
+`
+type person struct {
+	Name string `db:"name"`
+	Email string `db:"email"`
+}
+func main()  {
+   db := 	db.Sql{
 
-//func main()  {
-//   db := driver.Connect(host,port,user,password,dbname)
-//   err := db.SQL.Ping()
-//   if err != nil {
-//
-//   }
-//
-//   fmt.Println("connection ok")
-//
-//
-//}
+		Host:     "localhost",
+		Port:     5432,
+		UserName: "postgres",
+		Password: "3414pic2ck2pi",
+		DbName:   "postgres",
+	}
+	db.Connection()
 
+    //db.Db.MustExec(schema)
+    //tx:= db.Db.MustBegin()
+    //tx.MustExec("INSERT INTO test(name,email) VALUES ($1,$2)","nguyen ngoc lam","lamnn8@fpt.com")
+    //tx.NamedExec("INSERT INTO test(name,email) VALUES (:name,:email)",&person{
+	//	"dung",
+	//	"dungtd",
+	//})
+    //tx.Commit()
+
+    peope:=[]person{}
+    query := db.Db
+    query.Select(&peope,"SELECT * FROM test")
+    fmt.Println(peope)
+    defer db.Close()
+
+}

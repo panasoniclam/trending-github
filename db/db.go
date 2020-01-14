@@ -3,6 +3,8 @@ package db
 import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	"github.com/labstack/gommon/log"
+	_ "github.com/lib/pq"
 )
 
 type (
@@ -10,20 +12,21 @@ type (
 		Db *sqlx.DB
 		Host string
 		Port int
-		Username string
+		UserName string
 		Password string
-		Dbname string
-
+		DbName string
 	}
-
 )
 
-func (s *Sql)Connection()   {
-	datasource := fmt.Sprint("host=%s port=%d user=%s password=%d dbname=%s sslmode=disable")
-	s.Db  =  sqlx.MustConnect("postgres",datasource)
-
-	if err := s.Db.Ping(); err != nil{
-
-		return
+func (sql *Sql)Connection()  {
+	dataSource := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s",sql.Host,sql.Port,sql.UserName,sql.Password,sql.DbName)
+	sql.Db =  sqlx.MustConnect("postgres",dataSource)
+	if err:= sql.Db.Ping(); err!= nil {
+		log.Error(err.Error())
 	}
+	fmt.Println("connect db success !")
+}
+
+func (sql *Sql)Close()  {
+	sql.Db.Close()
 }
