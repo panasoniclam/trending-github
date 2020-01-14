@@ -76,6 +76,7 @@ func (u *HandleUser)HandleSignIp(context echo.Context) error  {
 			Data:       nil,
 		})
 	}
+
 	user.Token = token
 	return  context.JSON(http.StatusOK, model.Response{
 		StatusCode: http.StatusOK,
