@@ -3,6 +3,8 @@ module github.com/panasoniclam/trending-github
 go 1.13
 
 require (
+	github.com/go-playground/validator/v10 v10.1.0 // indirect
+	github.com/google/uuid v1.1.1 // indirect
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.0
