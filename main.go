@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/panasoniclam/trending-github/db"
+
 )
 const schema = `
    CREATE TABLE TEST(
