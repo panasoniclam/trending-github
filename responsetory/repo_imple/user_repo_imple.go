@@ -14,11 +14,10 @@ type User_Repo struct {
  	sql *Db.Sql
  }
 
-func (u *User_Repo)SaveUser(context context.Context, user model.User) (model.User,error)  {
+func (u *User_Repo) SaveUser(context context.Context, user model.User) (model.User,error)  {
 	 statement := ` INSERT INTO users(user_id, full_name, email,password,role,create_at,update_at,token)
        VALUES (:user_id,:full_name,:email,:password,:role,:create_at,:update_at,token)
        `
-
 	 user.CreatedAt = time.Now()
 	 user.UpdatedAt = time.Now()
 

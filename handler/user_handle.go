@@ -8,7 +8,7 @@ import (
 	"github.com/panasoniclam/trending-github/secure"
 
 	"net/http"
-   validator  "github.com/go-playground/validator/v10"
+     validator  "github.com/go-playground/validator/v10"
 	req2 "github.com/panasoniclam/trending-github/model/rep"
 	 uuid "github.com/google/uuid"
 	"time"
@@ -76,17 +76,11 @@ func (u *HandleUser)HandleSignIp(context echo.Context) error  {
 			Data:       nil,
 		})
 	}
-
-
 	user.Token = token
-
 	return  context.JSON(http.StatusOK, model.Response{
 		StatusCode: http.StatusOK,
 		Message:    "sữ lý thành công",
 		Data:       nil,
 	})
-
-
-
 
 }
