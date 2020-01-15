@@ -1,4 +1,5 @@
-package response
+package model
+
 
 type Response struct {
 	StatusCode int
