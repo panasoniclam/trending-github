@@ -34,18 +34,30 @@ func (u *HanlderUser)HandleSignUp(context echo.Context) error  {
 		})
 	}
 
-	hash := security.HashAndSalt([]byte(req.Pssword))
-	role  := model.MEMBER.String()
 
 
 	UserId, err := uuid.NewUUID()
-	if err := nil {
+	if err != nil {
 		return context.JSON(http.StatusForbidden, model.Response{
 			StatusCode: http.StatusForbidden,
-			Message:   ,
+			Message:  err.Error() ,
 			Data:       nil,
 		})
 	}
+	hash  := security.HashAndSalt([]byte(req.Pssword))
+	role := model.MEMBER.String()
+	user := model.User{
+		UserId:   UserId.String(),
+		UserName: req.FullName,
+		Password: hash,
+		Email:    req.Email,
+		Role: role,
+		CreateAt: time.Time{},
+		UpdateAt: time.Time{},
+		Token:    "",
+	}
+
+
 
 
 

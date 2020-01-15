@@ -7,6 +7,7 @@ type User struct {
 	UserName string
 	Password string
 	Email string
+	Role string
 	CreateAt time.Time
 	UpdateAt time.Time
 	Token string
