@@ -42,21 +42,10 @@ func (u *HanlderUser)HandleSignUp(context echo.Context) error  {
 	if err := nil {
 		return context.JSON(http.StatusForbidden, model.Response{
 			StatusCode: http.StatusForbidden,
-			Message:    ,
+			Message:   ,
 			Data:       nil,
 		})
 	}
-	user:= model.User{
-		UserId:   ,
-		UserName: "",
-		Password: "",
-		Email:    "",
-		CreateAt: time.Time{},
-		UpdateAt: time.Time{},
-		Token:    "",
-	}
-
-
 
 
 
