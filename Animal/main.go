@@ -2,6 +2,7 @@ package  main
 
 import (
 	"fmt"
+	"strings"
 	"sync"
 	"time"
 )
@@ -70,40 +71,80 @@ func Printf(words []string, wg sync.WaitGroup)  {
 }
 type sock struct {
 	number int32
-	occurrences int32
+	oncurrences int32
 }
-func (pair *sock)increment() {
-	pair.occurrences  ++
+
+func (pair *sock)increment()  {
+	pair.oncurrences ++
 }
 func (pair *sock)getAmountOfPair()int32  {
-	return pair.occurrences/2
+	return pair.oncurrences/2
 }
-func sockMerchan(n int32,ar []int32) int32 {
+func sockMerchan(n int32,arr []int32) int32 {
 	pairs := make([]*sock,0,10)
-	for _, e := range ar {
+	for _,i := range arr {
 		found := false
-		for _, pair := range pairs {
-			if pair.number == e {
-				pair.increment()
+		for _,j :=range pairs {
+			if j.number == i {
+				j.increment()
 				found = true
 			}
 		}
-
 		if !found {
-			pairs = append(pairs, &sock{
-				number:      e,
-				occurrences: 1,
+			pairs = append(pairs,&sock{
+				number:      i,
+				oncurrences: 1,
 			})
 		}
 	}
-	var result int32
-	for _, pair := range pairs {
-		result += pair.getAmountOfPair()
+	var result int32  = 0
+	for _, a := range  pairs {
+		result += a.getAmountOfPair()
 	}
 	return result
 }
+func valeyCount()  {
+	s := "UDDUDUU"
+	var countingValey int32 = 0
+	var antitude int32 = 0
+	for i:=0;i<len(s);i++ {
+		if string(s[i]) == "U"{
+			antitude ++
+			if antitude == 0 {
+				countingValey ++
+			}
+		}else  {
+			antitude --
+		}
+	}
+
+	fmt.Println(countingValey)
+}
+func Clount(){
+	s:= "000010"
+	c:= make([]int32,len(s))
+	var currentPossition int32  = 0
+	lastCloud := int32(len(s)) -1
+	var jumb int32  = 0
+	for currentPossition < lastCloud {
+		if currentPossition +1 ==  lastCloud {
+			currentPossition ++
+		}else if c[currentPossition+2]==0  {
+			currentPossition = currentPossition +2
+		}else {
+			currentPossition ++
+		}
+		jumb ++
+	}
+	fmt.Println(jumb)
+}
 func main()  {
-	arr := []int32{1,2,1,1,3,4,5,4}
-	result := sockMerchan(2,arr)
-	fmt.Println(result)
+     s:= "abc"
+     s1 := strings.Trim(s,"c")
+
+     s2:= strings.TrimRight(s,"c")
+     fmt.Println(s1)
+     fmt.Println(s2)
+
+
 }
